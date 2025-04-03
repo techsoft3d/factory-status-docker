@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		<%= title %>
+	</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<%- include('./partials/google_tag_manager') %>
+
+		<script type="text/javascript" src="/javascripts/communicator_scripts/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.js"></script>
+		<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+
+		<script>
+			const HWP_VERSION = "<%- process.env.HWP_VERSION %>";
+			const STREAM_CACHE_API = "<%- process.env.STREAM_CACHE_API %>";
+			const HWP_ENGINE_PATH = "<%- process.env.HWP_ENGINE_PATH %>";
+			const HWP_VIEWER_PATH = "<%- process.env.HWP_VIEWER_PATH %>";
+		</script>
+
+		<script type="text/javascript"
+			src="https://cdn.jsdelivr.net/gh/techsoft3d/hoops-web-viewer@2022.2.0/hoops_web_viewer.js?v=2022.2.0"></script>
+
+		<script type="text/javascript" src="/demos/factory-status/javascripts/general_func.js"></script>
+		<script type="text/javascript" src="/demos/factory-status/javascripts/importCSV.js"></script>
+		<script type="text/javascript" src="/demos/factory-status/javascripts/HC_common.js"></script>
+		<script type="text/javascript" src="/demos/factory-status/javascripts/toolTip.js"></script>
+		<script type="module" src="/demos/factory-status/javascripts/robotics.js"></script>
+		<script type="text/javascript" src="/demos/factory-status/javascripts/robotInstance.js"></script>
+		<script type="text/javascript" src="/demos/factory-status/javascripts/jquery.periodicalupdater.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+		<script type="text/javascript" src="/javascripts/communicator_scripts/sample.js?v=2022.2.0"></script>
+		<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+
+		<link rel="stylesheet" href="/stylesheets/jquery-ui-1.9.2.custom.min.css" />
+		<link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+		<link rel="stylesheet" href="/demos/factory-status/stylesheets/robotics.css" type="text/css" />
+
+		<script type="module">
+			import robotViewer from "/demos/factory-status/javascripts/robotics.js";
+
+			var viewer;
+			viewer = new robotViewer();
+			viewer.start();
+
+			google.charts.load("current", { packages: ["corechart", "bar"] });
+
+			var linkText =
+				window.location.origin + "/factory-controller";
+			$("#controllerLink").text(linkText);
+		</script>
+</head>
+
+<body>
+	<%- include('./partials/google_tag_manager_noscript') %>
+		<div id="header">
+			<img src="/demos/factory-status/images/HC_logo.png" style="height: 50px" />
+		</div>
+		<div id="title">&nbsp;Factory Operating Status Monitor</div>
+		<div id="content">
+			<div id="container"></div>
+			<div id="footer">© Tech Soft 3D All Rights Reserved</div>
+		</div>
+		<div id="demoInfo">
+			This demonstration is monitoring operating status uploaded from a distant
+			factory: <br />
+			<a href="/factory-controller" id="controllerLink" target="_blank"></a>
+			(open this factory side application using other device)
+		</div>
+		<button id="ratioBtn" type="button" class="btn btn-default">
+			Factory Operating Ratio
+		</button>
+		<div id="stage"></div>
+		<div id="piechart0" class="piechart"></div>
+		<div id="piechart1" class="piechart"></div>
+		<div id="piechart2" class="piechart"></div>
+		<div id="piechart3" class="piechart"></div>
+		<div id="piechart4" class="piechart"></div>
+		<div id="piechart5" class="piechart"></div>
+		<div id="piechart6" class="piechart"></div>
+		<div id="piechart7" class="piechart"></div>
+		<div id="piechart8" class="piechart"></div>
+		<div id="piechart9" class="piechart"></div>
+		<div id="dialog">
+			<div id="columnChart"></div>
+		</div>
+</body>
+
+</html>
