@@ -130,7 +130,12 @@ jobs:
         run: |
           docker pull ghcr.io/techsoft3d/streaming-server:latest
           docker pull ghcr.io/techsoft3d/proxy-server:latest
-      
+
+      - name: Clean shared volumes
+        run: |
+          docker run --rm -v public:/volume alpine sh -c "rm -rf /volume/*"
+          docker run --rm -v models:/volume alpine sh -c "rm -rf /volume/*"
+          
       - name: Copy `./public` into External Docker Volume (Using Temporary Container)
         run: |
           docker run --rm \
@@ -146,8 +151,6 @@ jobs:
             -v models:/volume \
             -v $(pwd)/models:/backup \
             alpine sh -c "cp -r /backup/* /volume/ && ls -la /volume/"
-
-    
 
       - name: Build and Run Docker Containers
         run: |
