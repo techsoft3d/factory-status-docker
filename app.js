@@ -50,3 +50,16 @@ app.use(function (req, res, next) {
 });
 
 // Error handler
+app.use(function (err, req, res, next) {
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.status(err.status || 500);
+  res.render('error/general-error');
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log('\n✅ Communicator Service Website is listening on port', PORT);
+});
+
+module.exports = app;
