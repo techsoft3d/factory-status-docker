@@ -9,22 +9,16 @@ var factory_uids = [
 
 
 export async function startViewer(model, container) {
-        const conversionServiceURI = "https://csapi.techsoft3d.com";
-
-        var viewer;
-
-        let res = await fetch(conversionServiceURI + '/api/streamingSession');
-        var data = await res.json();
-
-        await fetch(conversionServiceURI + '/api/enableStreamAccess/' + data.sessionid, { method: 'put', headers: { 'items': JSON.stringify(factory_uids) } });
-   
+        var server = new ServerConnection("https://factory-status-docker.techsoft3d.com"); //change to IP of host server
+        await server.connect();
+        var viewer;   
 
         viewer = new Communicator.WebViewer({
                 containerId: container,
-                endpointUri: 'wss://' + data.serverurl + ":" + data.port + '?token=' + data.sessionid,
+                endpointUri: server._endpointuri,
                 model: model,
                 boundingPreviewMode: "none",
-                enginePath: "https://cdn.jsdelivr.net/gh/techsoft3d/hoops-web-viewer@2022.2",
+                enginePath: '/hoops',
                 rendererType: 0
         });
 
