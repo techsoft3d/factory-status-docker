@@ -227,6 +227,7 @@ robotViewer.prototype._createViewer = function () {
                         function (date) {
                             if (date != "not found") {
                                 $.getJSON('/demos/factory-status/json/status.json', (data) => {
+                                    console.log("here 1")
                                     model.resetNodesColor();
                                     for (var i = 0; i < _this._robotSystems.length; i++) {
                                         if (data[String(i)]) {

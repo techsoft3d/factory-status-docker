@@ -1,1 +1,42 @@
-{"1":{"status":"stop"},"5":{"status":"shutdown"},"7":{"status":"alarm","reason":"Program error"}}
+{
+    "0": {
+        "status": "run",
+        "ONum": "O4091"
+    },
+    "1": {
+        "status": "run",
+        "ONum": "O5940"
+    },
+    "2": {
+        "status": "run",
+        "ONum": "O5900"
+    },
+    "3": {
+        "status": "run",
+        "ONum": "O4152"
+    },
+    "4": {
+        "status": "run",
+        "ONum": "O8764"
+    },
+    "5": {
+        "status": "run",
+        "ONum": "O9316"
+    },
+    "6": {
+        "status": "run",
+        "ONum": "O2333"
+    },
+    "7": {
+        "status": "run",
+        "ONum": "O9817"
+    },
+    "8": {
+        "status": "run",
+        "ONum": "O2612"
+    },
+    "9": {
+        "status": "run",
+        "ONum": "O1478"
+    }
+}

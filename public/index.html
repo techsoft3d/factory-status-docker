@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Factory Operating Status Monitor | HOOPS Web Viewer</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script type="text/javascript" src="javascripts/communicator_scripts/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="javascripts/jquery-ui-1.9.2.custom.js"></script>
+  <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="hoops/hoops_web_viewer.js"></script>
+
+  <script type="text/javascript" src="javascripts/general_func.js"></script>
+  <script type="text/javascript" src="javascripts/importCSV.js"></script>
+  <script type="text/javascript" src="javascripts/HC_common.js"></script>
+  <script type="text/javascript" src="javascripts/toolTip.js"></script>
+  <script type="module" src="javascripts/robotics.js"></script>
+  <script type="text/javascript" src="javascripts/robotInstance.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.periodicalupdater.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript" src="javascripts/communicator_scripts/sample.js?v=latest"></script>
+  <script type="text/javascript" src="javascripts/caas.min.js"></script>
+  <script type="text/javascript" src="javascripts/ServerConnection.js"></script>
+
+  <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+
+  <link rel="stylesheet" href="stylesheets/jquery-ui-1.9.2.custom.min.css" />
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css" />
+  <link rel="stylesheet" href="stylesheets/robotics.css" type="text/css" />
+
+  <script type="module">
+    // caasClient.init('https://caas.techsoft3d.com', { accessKey: "64e757dbd8ac93cc087cfab7" });
+
+    import robotViewer from "./javascripts/robotics.js";
+
+    var viewer;
+    viewer = new robotViewer();
+    viewer.start();
+
+    google.charts.load("current", { packages: ["corechart", "bar"] });
+
+    var linkText =
+      window.location.origin + "/controller";
+    $("#controllerLink").text(linkText);
+  </script>
+</head>
+
+<body>
+  <div id="header">
+    <img src="stylesheets/images/HC_logo_shrunken.png" style="height: 50px" />
+  </div>
+  <div id="title">&nbsp;Factory Operating Status Monitor</div>
+  <div id="content">
+    <div id="container"></div>
+    <div id="footer">© Tech Soft 3D All Rights Reserved</div>
+  </div>
+  <div id="demoInfo">
+    This demonstration is monitoring operating status uploaded from a distant
+    factory: <br />
+    <a href="./factory-controller.html" id="controllerLink" target="_blank"></a>
+    (open this factory side application using other device)
+  </div>
+  <button id="ratioBtn" type="button" class="btn btn-default">
+    Factory Operating Ratio
+  </button>
+  <div id="stage"></div>
+  <div id="piechart0" class="piechart"></div>
+  <div id="piechart1" class="piechart"></div>
+  <div id="piechart2" class="piechart"></div>
+  <div id="piechart3" class="piechart"></div>
+  <div id="piechart4" class="piechart"></div>
+  <div id="piechart5" class="piechart"></div>
+  <div id="piechart6" class="piechart"></div>
+  <div id="piechart7" class="piechart"></div>
+  <div id="piechart8" class="piechart"></div>
+  <div id="piechart9" class="piechart"></div>
+  <div id="dialog">
+    <div id="columnChart"></div>
+  </div>
+</body>
+
+</html>
