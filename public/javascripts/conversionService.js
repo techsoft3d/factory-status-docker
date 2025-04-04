@@ -1,35 +1,30 @@
 var factory_uids = [
-        "ad250b7d-5fe5-4501-99a2-23fbfb7bcadd", //factory
-        "44529bbd-5a23-4d4e-be8c-301d419b9b25",//cmm assembly
-        "00e21aa8-849e-42b6-9cee-d8486ffec1ff", //nsrobot5
-        "8fe956a3-6b13-4a3a-940b-d726a76b741f",//pickuprobot1
-        "8ecabe07-8a59-40cf-92d9-c5b5be22a482",//weldrobot1
+        "478f45db-a31c-4ced-88a8-0fa57febdcf2", //factory
+        "eced11eb-15e2-4942-b59f-9a423e2a8f10",//cmm assembly
+        "8235ee04-2b49-4288-ab1d-4483647b19de", //nsrobot5
+        "22cb3635-120d-49a7-a0d7-2ff0edcbb5fd",//pickuprobot1
+        "abd650c0-e04c-4c25-9d3b-f90c7f497de0",//weldrobot1
 ]
 
 
 
 export async function startViewer(model, container) {
-        var viewer;
-        var server = new ServerConnection("https://four-models-docker.techsoft3d.com"); //change to IP of host server
+        var server = new ServerConnection("https://factory-status-docker.techsoft3d.com"); //change to IP of host server
         await server.connect();
+        var viewer;   
 
-        
         viewer = new Communicator.WebViewer({
                 containerId: container,
-                endpointUri: sessioninfo.endpointUri,
+                endpointUri: server._endpointuri,
                 model: model,
                 boundingPreviewMode: "none",
                 enginePath: '/hoops',
                 rendererType: 0
         });
 
+        // viewer.start();
 
         return viewer;
 
 }
 
-async function fetchVersionNumber() {
-        let data = await caasClient.getHCVersion();
-        return data
-      }
-      
