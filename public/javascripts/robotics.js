@@ -196,7 +196,7 @@ robotViewer.prototype._createViewer = function () {
                 _this._robotSystems[9].startAnimation(('0000' + Math.floor(Math.random() * 10000)).slice(-4));
                
                 setInterval(function() {
-                    $.getJSON('https://four-models-docker.techsoft3d.com/demos/factory-status/json/status.json', (data) => {
+                    $.getJSON('https://factory-status-docker.techsoft3d.com/demos/factory-status/json/status.json', (data) => {
                         model.resetNodesColor();
                         for (var i = 0; i < _this._robotSystems.length; i++) {
                             if (data[String(i)]) {
